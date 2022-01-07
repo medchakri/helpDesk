@@ -23,6 +23,18 @@
       "nom": "Projet 4",
       "date_debut": "06/11/2021",
       "date_fin": "19/01/2021"
+    },
+    {
+      "nom": "Alea Stephens",
+      "date_debut": "1986-03-20",
+      "date_fin": "2012-02-11",
+      "id": 5
+    },
+    {
+      "nom": "Keely Cote",
+      "date_debut": "2019-05-19",
+      "date_fin": "1973-09-19",
+      "id": 6
     }
   ],
   "taches": [
@@ -51,9 +63,9 @@
       "completed": true
     },
     {
-      "projetId": 1,
+      "projectId": 1,
       "id": 5,
-      "titre": "laboriosam mollitia hola chakri mohamed",
+      "title": "laboriosam mollitia hola chakri mohamed",
       "completed": true
     },
     {

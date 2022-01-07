@@ -7,10 +7,10 @@ import { FormsModule } from "@angular/forms";
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
 import { NotificationsComponent } from "../../pages/notifications/notifications.component";
-import { TablesComponent } from "../../pages/tables/tables.component";
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { ProjetsComponent } from "src/app/pages/projets/projets.component";
 
 @NgModule({
   imports: [
@@ -22,7 +22,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
   ],
   declarations: [
     DashboardComponent,
-    TablesComponent,
+    ProjetsComponent,
     NotificationsComponent,
     // RtlComponent
   ]

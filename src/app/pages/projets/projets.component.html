@@ -1,0 +1,105 @@
+<div class="content">
+  <div class="col-md-12">
+    <form method="post" (ngSubmit)="addProjet()">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="formGroupExampleInput" class="text-white"
+              >Project Name</label
+            >
+            <input
+              [(ngModel)]="projet.nom"
+              type="text"
+              class="form-control"
+              id="formGroupExampleInput"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="formGroupExampleInput" class="text-white"
+              >Date Debut</label
+            >
+            <input
+              [(ngModel)]="projet.date_debut"
+              type="date"
+              class="form-control"
+              id="formGroupExampleInput"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="formGroupExampleInput" class="text-white"
+              >Date Fin</label
+            >
+            <input
+              [(ngModel)]="projet.date_fin"
+              type="date"
+              class="form-control"
+              id="formGroupExampleInput"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row text-center">
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-success btn-lg btn-block">
+            Ajouter Projet
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-12 m-2">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Liste Projets</h4>
+        </div>
+        <div class="card-body">
+          <table class="table tablesorter">
+            <thead class="text-primary">
+              <tr>
+                <th>Id Projet</th>
+                <th>Nom</th>
+                <th>Date Debut</th>
+                <th>Date Fin</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pr of projets">
+                <td>
+                  <b>#{{ pr.id }}</b>
+                </td>
+                <td>
+                  {{ pr.nom }}
+                </td>
+                <td>
+                  {{ pr.date_debut }}
+                </td>
+                <td>
+                  {{ pr.date_fin }}
+                </td>
+                <td>
+                  <button class="btn btn-success btn-sm">
+                    <i class="icon-pencil"></i>
+                  </button>
+                  <button
+                    (click)="deleteProjet(pr.id)"
+                    class="btn btn-danger btn-sm"
+                  >
+                    <i class="icon-trash-simple"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
