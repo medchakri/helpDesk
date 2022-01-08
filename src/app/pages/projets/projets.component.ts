@@ -9,11 +9,13 @@ import { ProjetService } from 'src/app/service/projet.service';
 export class ProjetsComponent implements OnInit {
 
   projet = new Projet();
-  projets: Projet[];
+  projets: Projet[] = [];
 
   constructor(private projetService: ProjetService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getProjets();
+  }
 
   getProjets(){
     this.projetService.findAll().subscribe(projects => {
@@ -32,6 +34,15 @@ export class ProjetsComponent implements OnInit {
       this.projets = [prj, ...this.projets]
       this.projet = new Projet(); 
     })
+  }
+
+  editProjet(prj: Projet){
+    this.projet = prj;
+    console.log(prj);
+  }
+
+  updateProjet(){
+    this.projetService.update(this.projet).subscribe(() => this.projet = new Projet());
   }
 
 }

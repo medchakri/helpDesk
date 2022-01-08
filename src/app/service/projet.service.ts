@@ -1,12 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Projet } from '../model/projet';
-
-const httpOptions = {
-  headers: new HttpHeaders({ 
-    'Access-Control-Allow-Origin':'*',
-  })
-};
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +12,7 @@ export class ProjetService {
   constructor(private http: HttpClient) { }
 
   findAll(){
-    return this.http.get<Projet[]>(this.api, httpOptions);
+    return this.http.get<Projet[]>(this.api);
   }
 
   delete(id: number){
@@ -26,7 +20,7 @@ export class ProjetService {
   }
 
   create(projet: Projet){
-    return this.http.post<Projet>(`${this.api}`, projet, httpOptions);
+    return this.http.post<Projet>(`${this.api}`, projet);
   }
 
   update(projet: Projet){

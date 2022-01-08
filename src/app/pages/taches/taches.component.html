@@ -1,0 +1,123 @@
+<div class="content">
+  <div class="col-md-12">
+    <form method="post">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="formGroupExampleInput">Task Name</label>
+            <input
+              [(ngModel)]="tache.titre"
+              type="text"
+              class="form-control"
+              id="formGroupExampleInput"
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="formGroupExampleInput">Projet</label>
+            <select
+              [(ngModel)]="tache.projetId"
+              class="form-control"
+              id="formGroupExampleInput"
+            >
+              <option *ngFor="let item of projets" [value]="item.id">
+                {{ item.nom }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row text-center">
+        <div class="col-md-12">
+          <button
+            *ngIf="tache.id == null"
+            (click)="addTache()"
+            type="submit"
+            class="btn btn-success btn-lg btn-block"
+          >
+            Ajouter Tache
+          </button>
+          <button
+            *ngIf="tache.id != null"
+            (click)="updateTache()"
+            type="submit"
+            class="btn btn-primary btn-lg btn-block"
+          >
+            Modifier Tache
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-12 m-2">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Liste Projets</h4>
+          <small>
+            Vous Pouver Modifier si la tache est complete par click sur l'icone
+            <i class="fa fa-thumbs-down ml-2"></i>
+          </small>
+        </div>
+        <div class="card-body">
+          <table class="table tablesorter">
+            <thead class="text-primary">
+              <tr>
+                <th>Id Tache</th>
+                <th>Titre</th>
+                <th>Cmpleté</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let tsk of taches">
+                <td>
+                  <b>#{{ tsk.id }}</b>
+                </td>
+                <td>
+                  {{ tsk.titre }}
+                </td>
+                <td>
+                  <span
+                    (click)="updateCompleted(tsk)"
+                    [ngClass]="{
+                      'badge-info': tsk.completed,
+                      'badge-danger': !tsk.completed
+                    }"
+                    class="badge badge-secondary badge-pill"
+                  >
+                    <i
+                      class="fa"
+                      [ngClass]="{
+                        'fa-thumbs-up': tsk.completed,
+                        'fa-thumbs-down': !tsk.completed
+                      }"
+                    >
+                    </i>
+                  </span>
+                </td>
+                <td>
+                  <button
+                    (click)="editTache(tsk)"
+                    class="btn btn-success btn-sm mr-2"
+                  >
+                    <i class="tim-icons icon-pencil"></i>
+                  </button>
+                  <button
+                    (click)="deleteTache(tsk.id)"
+                    class="btn btn-danger btn-sm"
+                  >
+                    <i class="tim-icons icon-trash-simple"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

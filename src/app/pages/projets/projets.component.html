@@ -1,12 +1,10 @@
 <div class="content">
   <div class="col-md-12">
-    <form method="post" (ngSubmit)="addProjet()">
+    <form method="post">
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            <label for="formGroupExampleInput" class="text-white"
-              >Project Name</label
-            >
+            <label for="formGroupExampleInput">Project Name</label>
             <input
               [(ngModel)]="projet.nom"
               type="text"
@@ -17,9 +15,7 @@
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <label for="formGroupExampleInput" class="text-white"
-              >Date Debut</label
-            >
+            <label for="formGroupExampleInput">Date Debut</label>
             <input
               [(ngModel)]="projet.date_debut"
               type="date"
@@ -30,9 +26,7 @@
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <label for="formGroupExampleInput" class="text-white"
-              >Date Fin</label
-            >
+            <label for="formGroupExampleInput">Date Fin</label>
             <input
               [(ngModel)]="projet.date_fin"
               type="date"
@@ -45,8 +39,21 @@
 
       <div class="row text-center">
         <div class="col-md-12">
-          <button type="submit" class="btn btn-success btn-lg btn-block">
+          <button
+            *ngIf="projet.id == null"
+            (click)="addProjet()"
+            type="submit"
+            class="btn btn-success btn-lg btn-block"
+          >
             Ajouter Projet
+          </button>
+          <button
+            *ngIf="projet.id != null"
+            (click)="updateProjet()"
+            type="submit"
+            class="btn btn-primary btn-lg btn-block"
+          >
+            Modifier Projet
           </button>
         </div>
       </div>
@@ -85,14 +92,17 @@
                   {{ pr.date_fin }}
                 </td>
                 <td>
-                  <button class="btn btn-success btn-sm">
-                    <i class="icon-pencil"></i>
+                  <button
+                    (click)="editProjet(pr)"
+                    class="btn btn-success btn-sm mr-2"
+                  >
+                    <i class="tim-icons icon-pencil"></i>
                   </button>
                   <button
                     (click)="deleteProjet(pr.id)"
                     class="btn btn-danger btn-sm"
                   >
-                    <i class="icon-trash-simple"></i>
+                    <i class="tim-icons icon-trash-simple"></i>
                   </button>
                 </td>
               </tr>

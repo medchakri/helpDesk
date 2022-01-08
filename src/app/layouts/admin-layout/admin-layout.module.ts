@@ -6,11 +6,12 @@ import { FormsModule } from "@angular/forms";
 
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
-import { NotificationsComponent } from "../../pages/notifications/notifications.component";
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ProjetsComponent } from "src/app/pages/projets/projets.component";
+import { TicketsComponent } from "src/app/pages/tickets/tickets.component";
+import { TachesComponent } from "src/app/pages/taches/taches.component";
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { ProjetsComponent } from "src/app/pages/projets/projets.component";
   declarations: [
     DashboardComponent,
     ProjetsComponent,
-    NotificationsComponent,
+    TicketsComponent,
+    TachesComponent,
     // RtlComponent
   ]
 })
