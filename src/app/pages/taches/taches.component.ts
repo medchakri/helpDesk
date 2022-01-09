@@ -42,10 +42,9 @@ export class TachesComponent implements OnInit {
   addTache(){
     this.TacheService.create(this.tache).subscribe((tsk)=>{
       this.taches = [tsk, ...this.taches]
-      this.tache = new Tache(); 
+      this.tache = new Tache();
     })
   }
-  
   updateCompleted(task: Tache){
     this.TacheService.completed(task.id, task.completed)
         .subscribe(() => {
