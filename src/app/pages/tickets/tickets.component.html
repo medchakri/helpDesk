@@ -15,16 +15,16 @@
             />
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="form-group">
-            <label for="formGroupExampleInput">Projet</label>
+            <label for="formGroupExampleInput">Taches</label>
             <select
-              [(ngModel)]="ticket.projetId"
+              [(ngModel)]="ticket.tacheId"
               class="form-control"
               id="projectInput"
             >
-              <option *ngFor="let item of projets" [value]="item.id">
-                {{ item.nom }}
+              <option *ngFor="let item of taches" [value]="item.id">
+                {{ item.titre }}
               </option>
             </select>
           </div>
@@ -122,4 +122,50 @@
       </div>
     </div>
   </div>
+
+  <div class="row mt-12">
+    <div class="col-md-12 m-2">
+  <div class="card" *ngFor="let tsk of tickets" >
+    <div class="card-body">
+
+     <b> <h4 class="card-title">Ticket #{{ tsk.id }}</h4> </b>
+      <p class="card-text">{{ tsk.titre }}</p>
+    </div>
+    <div class="card-body">
+      <button
+        (click)="editTache(tsk)"
+        class="btn btn-success btn-sm mr-2"
+      >
+        <i class="tim-icons icon-pencil"></i>
+      </button>
+      <button
+        (click)="deleteTicket(tsk.id)"
+        class="btn btn-danger btn-sm"
+      >
+        <i class="tim-icons icon-trash-simple"></i>
+      </button>
+
+
+      <span style="margin-left: 10px"
+        (click)="updateCompleted(tsk)"
+        [ngClass]="{
+                      'badge-info': tsk.completed,
+                      'badge-danger': !tsk.completed
+                    }"
+        class="badge badge-secondary badge-pill"
+      >
+                    <i
+                      class="fa"
+                      [ngClass]="{
+                        'fa-thumbs-up': tsk.completed,
+                        'fa-thumbs-down': !tsk.completed
+                      }"
+                    >
+                    </i>
+      </span>
+    </div>
+  </div>
+    </div>
+  </div>
+
 </div>

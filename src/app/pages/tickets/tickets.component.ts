@@ -3,6 +3,8 @@ import {Ticket} from "../../model/ticket";
 import {TicketService} from "../../service/ticket.service";
 import {Projet} from "../../model/projet";
 import {ProjetService} from "../../service/projet.service";
+import {TacheService} from "../../service/tache.service";
+import {Tache} from "../../model/tache";
 
 
 @Component({
@@ -13,9 +15,9 @@ export class TicketsComponent implements OnInit {
 
   ticket = new Ticket();
   tickets: Ticket[] = [];
-  projets: Projet[] = [];
+  taches: Tache[] = [];
 
-  constructor(private TicketService: TicketService , private projectService: ProjetService) {}
+  constructor(private TicketService: TicketService , private TacheService: TacheService) {}
 
   ngOnInit() {
     this.getTickets();
@@ -23,8 +25,8 @@ export class TicketsComponent implements OnInit {
   }
 
   getProjets(){
-    this.projectService.findAll().subscribe(prj => {
-      this.projets = prj;
+    this.TacheService.findAll().subscribe(tch => {
+      this.taches = tch;
     })
   }
 
