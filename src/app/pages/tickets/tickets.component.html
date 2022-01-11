@@ -20,6 +20,7 @@
             <label for="formGroupExampleInput">Taches</label>
             <select
               [(ngModel)]="ticket.tacheId"
+              style="color: #6c757d"
               class="form-control"
               id="projectInput"
             >
@@ -64,61 +65,6 @@
             <i class="fa fa-thumbs-down ml-2"></i>
           </small>
         </div>
-        <div class="card-body">
-          <table class="table tablesorter">
-            <thead class="text-primary">
-            <tr>
-              <th>Id Ticket</th>
-              <th>Titre</th>
-              <th>Cmpleté</th>
-              <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let tsk of tickets">
-              <td>
-                <b>#{{ tsk.id }}</b>
-              </td>
-              <td>
-                {{ tsk.titre }}
-              </td>
-              <td>
-                  <span
-                    (click)="updateCompleted(tsk)"
-                    [ngClass]="{
-                      'badge-info': tsk.completed,
-                      'badge-danger': !tsk.completed
-                    }"
-                    class="badge badge-secondary badge-pill"
-                  >
-                    <i
-                      class="fa"
-                      [ngClass]="{
-                        'fa-thumbs-up': tsk.completed,
-                        'fa-thumbs-down': !tsk.completed
-                      }"
-                    >
-                    </i>
-                  </span>
-              </td>
-              <td>
-                <button
-                  (click)="editTache(tsk)"
-                  class="btn btn-success btn-sm mr-2"
-                >
-                  <i class="tim-icons icon-pencil"></i>
-                </button>
-                <button
-                  (click)="deleteTicket(tsk.id)"
-                  class="btn btn-danger btn-sm"
-                >
-                  <i class="tim-icons icon-trash-simple"></i>
-                </button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
       </div>
     </div>
   </div>
@@ -128,7 +74,7 @@
   <div class="card" *ngFor="let tsk of tickets" >
     <div class="card-body">
 
-     <b> <h4 class="card-title">Ticket #{{ tsk.id }}</h4> </b>
+     <b> <h4 class="card-title">Ticket #{{ tsk.id }}</h4> dans la tache N #{{ tsk.tacheId }} </b>
       <p class="card-text">{{ tsk.titre }}</p>
     </div>
     <div class="card-body">
